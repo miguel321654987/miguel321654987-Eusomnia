@@ -1,0 +1,27 @@
+.env
+.venv
+database.database
+database.db
+instance/
+diagram.png
+public/*
+dist/*
+!.vscode
+__pycache__/
+node_modules/
+
+# Caches & build artifacts
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.vite/
+dist/
+
+.agent/
+.clinerules/
+.continue/
+.github/copilot-instructions.md
+.sixthrules/
+

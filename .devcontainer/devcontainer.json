@@ -1,0 +1,44 @@
+{
+  "name": "GeekForce Labs - Python 3 & Pipenv Environment",
+
+  // Enlace con tu archivo docker-compose local
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app", // Asegúrate de que 'app' sea el nombre de tu servicio en el docker-compose.yml
+  "workspaceFolder": "/workspaces",
+  "remoteEnv": {
+    "DATABASE_URL": "postgresql://gitpod:postgres@db:5432/example"
+  },
+
+  // 👇 PEGA ESTE BLOQUE EXACTAMENTE AQUÍ
+  "features": {
+    "ghcr.io/devcontainers/features/node:2": {
+      "version": "lts"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "continue.apiBase": "http://host.docker.internal:11434"
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "MS-vsliveshare.vsliveshare",
+        "Continue.continue"
+      ]
+    }
+  },
+
+  "forwardPorts": [3000],
+
+  "portsAttributes": {
+    "3000": {
+      "visibility": "public",
+      "label": "Aplicación Web"
+    }
+  }
+
+  //"onCreateCommand": "cp -n .env.example .env && pipenv install",
+
+  //"postCreateCommand": "pipenv install && bash database.sh && python docs/assets/welcome.py"
+}

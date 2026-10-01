@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    #ports:
+    #  - "3000:3000"
+
+    volumes:
+      - ..:/workspaces:cached
+
+    # Mapeo del puente de red para conectar con los servicios de tu Windows (Ollama)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+      # ¡ESTA LÍNEA ES LA SOLUCIÓN! Mantiene el contenedor vivo sin levantar Flask
+    command: sleep infinity
+
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: gitpod
+      POSTGRES_DB: example
+      POSTGRES_PASSWORD: postgres
+
+volumes:
+  postgres-data:
